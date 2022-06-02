@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pb;
+
+import "google/protobuf/timestamp.proto";
+
+message User {
+    int64 ID = 1;
+    string name = 2;
+    string email = 3;
+    string phone = 4;
+    google.protobuf.Timestamp createdAt = 5;
+    google.protobuf.Timestamp updatedAt = 6;
+}
+
+message GetUsersRequest {
+    int64 salesOrderID = 1;
+}
+
+message GetUsersResponse {
+    repeated User users = 1;
+}
+
+service UserService {
+    rpc GetUsers (GetUsersRequest) returns (GetUsersResponse) {}
+}
